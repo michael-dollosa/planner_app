@@ -62,6 +62,17 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
     assert_equal new_category_desc, Category.find(category.id).description
   end
 
+  test "Action:Delete should be able to create new category" do
+    category = Category.new(name: "Food", description: "Test Food Category")
+    category.save
+    assert category.save
+
+    assert_difference 'Category.count', -1 do
+      delete category_path(category.id)
+      assert_response :success
+    end
+  end
+
 
 
 end

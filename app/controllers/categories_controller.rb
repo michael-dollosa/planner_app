@@ -28,7 +28,8 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-
+    @category = Category.find(params[:id])
+    @category.delete
   end
 
   private
