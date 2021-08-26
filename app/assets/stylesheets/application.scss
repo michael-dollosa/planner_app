@@ -137,7 +137,7 @@ button{
     // background-color: violet;
 
     >*:not(:last-child){
-      flex-grow: 1;
+      width: 10%;
     }
 
     >:last-child{
@@ -147,9 +147,11 @@ button{
     >.card-details-important{
       // background-color: blue;
       @include flex-row;
-      flex-grow: .7;
+      // flex-grow: .7;
+      width: 30vw;
 
       >.status{
+        width: 15%;
         font-size: 1rem;
         font-weight: 700;
       }
