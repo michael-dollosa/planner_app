@@ -10,6 +10,7 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
+    byebug
     @category.save
     #specify return redirect later
   end
@@ -29,7 +30,7 @@ class CategoriesController < ApplicationController
 
   def destroy
     @category = Category.find(params[:id])
-    @category.delete
+    @category.destroy
   end
 
   private

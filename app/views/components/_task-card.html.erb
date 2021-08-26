@@ -1,0 +1,23 @@
+<div class="task-card-container">
+  <div class="card-details">
+    <div class="card-details-important">
+      <div class="status">
+        <%= task.status.upcase %>
+      </div>
+
+      <div class="task-data">
+        <h1><%= task.title %></h1>
+        <h4><%= task.due_date %></h4>
+      </div>
+    </div>
+        
+    <div class="category">
+      <%= category_name.upcase %>
+    </div>
+
+    <div class="action-icon">
+      <%= link_to 'Delete', categories_path, class: "delete" %>
+      <%= link_to 'Edit', categories_path, class: "edit" %>
+    </div>
+  </div>
+</div>

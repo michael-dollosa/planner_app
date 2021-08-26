@@ -1,1 +1,43 @@
-<h2>Category Index</h2>
+<section class="container">
+  <div class="container-label">
+    <h1>Planner Dashboard</h1>
+  </div>
+
+  <div class="container-stats">
+    <div class="sub-container-stats">
+      <h1>123</h1>
+      <h4>Label</h4>
+    </div>
+
+    <div class="sub-container-stats">
+      <h1>123</h1>
+      <h4>Label</h4>
+    </div>
+
+    <div class="sub-container-stats">
+      <h1>123</h1>
+      <h4>Label</h4>
+    </div>
+
+    <div class="sub-container-stats">
+      <h1>123</h1>
+      <h4>Label</h4>
+    </div>
+  </div>
+
+  <div class="container-label">
+    <h1>Overall Tasks</h1>
+
+    <div class="form-filter_by">
+      <h3>Filter By</h3>
+    </div>
+  </div>
+
+  <div class="sub-container-task_cards">
+  <% @categories.each do |category| %>
+    <% category.tasks.each do |task| %>
+      <%= render partial: 'components/task-card', locals: {category_name: category.name, task: task} %>
+    <% end %>
+  <% end %>
+  </div>
+</section>

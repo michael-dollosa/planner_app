@@ -2,6 +2,10 @@ class TasksController < ApplicationController
   
   #new is not created since we would render a form inside a different erb file
 
+  def new
+    @task = Task.new()
+  end
+  
   def create
     @task = Task.new(task_params)
     @task.category_id = params[:category_id]
