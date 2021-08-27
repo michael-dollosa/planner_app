@@ -12,7 +12,7 @@
     </div>
         
     <div class="category">
-      <%= category_name.upcase %>
+      <%= link_to category_name.upcase, category_path(task.category_id) %>
     </div>
 
     <div class="action-icon">

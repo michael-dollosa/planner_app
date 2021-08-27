@@ -1,9 +1,8 @@
-<h1>New Task Temp</h1>
+<h1>Create Task</h1>
 
 <%= form_with model: [:category, @task], method: :post do |form| %>
-  <%= form.label :title, "Title" %>
   <%= form.text_field :title %>
-  <%= form.label :body, "Body" %>
-  <%= form.text_field :body %>
-  <%= form.submit "Submit" %>
+  <%= form.text_area :body %>
+  <%= form.date_field :due_date, value: Time.now.strftime('%Y-%m-%d') %>
+  <%= form.submit "Create Task", class: "submit" %>
 <% end %>

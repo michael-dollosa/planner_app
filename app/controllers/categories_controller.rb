@@ -10,7 +10,6 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-    byebug
     @category.save
     #specify return redirect later
   end

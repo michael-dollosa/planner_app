@@ -26,9 +26,9 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
   test "Action:Create should be able to create new task" do
     #create category first
     @category.save
-
+    
     assert_difference 'Task.count', 1 do
-      post category_tasks_path(@category.id), params: { task: { title: "Test Task", body: "Test Task Desc" } }
+      post category_tasks_path(@category.id), params: { task: { title: "Test Task", body: "Test Task Desc", status: "new", due_date: Time.at(0.0 + rand(1..1.1) * (Time.now.to_f - 0.0.to_f)) } }
     end
 
     assert_response :success
@@ -36,14 +36,16 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
 
   test "Action:Show should be able to show task" do
     #create task
-    @category.tasks.new(title: "Task under Food", body: "Food Body").save
-    get category_task_path(category_id: @category.id, id: @category.tasks.first)
+    @category.tasks.new(title: "Task under Food", body: "Food Body", status: "new", due_date: Time.at(0.0 + rand(1..1.1) * (Time.now.to_f - 0.0.to_f))).save
+
+    @task = Task.find(@category.tasks.first.id)
+    get category_task_path(category_id: @category.id, id: @task.id)
     assert_response :success
   end
 
   test "Action:Update should be able to update task" do
     #create task
-    @category.tasks.new(title: "Task under Food", body: "Food Body").save
+    @category.tasks.new(title: "Task under Food", body: "Food Body", status: "new", due_date: Time.at(0.0 + rand(1..1.1) * (Time.now.to_f - 0.0.to_f))).save
     new_task_title = "Updated Title"
     new_task_body = "Updated Body"
 
@@ -54,13 +56,13 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
     
   end
 
-  test "Action:Delete should be able to update task" do
+  test "Action:Delete should be able to delete task" do
     #create task
-    @category.tasks.new(title: "Task under Food", body: "Food Body").save
+    @category.tasks.new(title: "Task under Food", body: "Food Body", status: "new", due_date: Time.at(0.0 + rand(1..1.1) * (Time.now.to_f - 0.0.to_f))).save
 
     assert_difference 'Task.count', -1 do
       delete category_task_path(category_id: @category.id, id: @category.tasks.first)
-      assert_response :success
+      assert_response :redirect
     end
   end
 

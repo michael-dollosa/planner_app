@@ -8,6 +8,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
+    @task.status = "new"
     @task.category_id = params[:category_id]
     @task.save
   end
@@ -34,6 +35,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :body)
+    params.require(:task).permit(:title, :body, :status, :due_date)
   end
 end

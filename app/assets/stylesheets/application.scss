@@ -75,6 +75,23 @@ html {
   font-family: 'Open Sans', sans-serif;
 }
 
+body{
+  width: 100%;
+  display: flex;
+
+  >nav{
+    background-color: burlywood;
+    height: 100vh;
+    position: fixed;
+    width: 20rem;
+  }
+
+  >main{
+    margin-left: 20rem;
+    width: calc(100% - 200px)
+  }
+}
+
 button{
   color: white;
   text-decoration: none;
@@ -107,8 +124,9 @@ button{
   >.container-stats >.sub-container-stats{
     @include flex-col-center;
     border: 1px solid black;
-    width: 12rem;
-    height: 10rem;
+    // width: 12rem;
+    width: calc(70vw/4);
+    height: calc( (70vw/8) + 4rem );
     border-radius: 1rem;
     padding: 1rem;
 
@@ -179,15 +197,43 @@ button{
       @include flex-row;
       flex-direction: row-reverse;
       >.edit{
-        @include action-btn(#2ecc71);
         margin-right: 1rem;
-      }
-
-      >.delete{
-        @include action-btn(#e74c3c);
       }
     }
   }
 }
 
 
+.edit{
+  @include action-btn(#2ecc71);
+}
+
+.delete{
+  @include action-btn(#e74c3c);
+}
+
+.submit{
+  border: none;
+  @include action-btn(#3c6ae7);
+}
+
+form{
+  @include flex-col();
+  //input type text, date, 
+  font-family: inherit;
+  >*{
+    margin-bottom: 1rem;
+  }
+  >input,
+  textarea{
+    outline: none;
+    font-family: inherit;
+    font-size: 1.3rem;
+    padding: 0.7rem 1rem;
+  }
+
+  >input[type="submit"]{
+    font-family: inherit;
+    font-size: 1.3rem;
+  }
+}
