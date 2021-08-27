@@ -33,6 +33,8 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
 
   #controller data test
   test "Action:Index should show all Categories" do
+    # Category.new(name: "Food", description: "Test Food Category").save
+    # @categories = Category.all
     get categories_path
     assert_response :success
   end
@@ -69,8 +71,9 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
 
     assert_difference 'Category.count', -1 do
       delete category_path(category.id)
-      assert_response :success
     end
+
+    assert_response :redirect
   end
 
 

@@ -1,0 +1,10 @@
+<div class="category-card">
+  <div class="category-data">
+    <h3><%= link_to category.name&.capitalize, category_path(category.id) %></h3>
+  </div>
+
+  <div class="category-action">
+    <%= link_to 'Delete', category_path(category.id), class: "delete", method: :delete, data: {confirm: "All tasks under this category will also be deleted. Please confirm.", commit: 'Delete'}  %>
+    <%= link_to 'Edit', categories_path, class: "edit" %>
+  </div>
+</div>

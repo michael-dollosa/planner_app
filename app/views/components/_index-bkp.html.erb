@@ -1,0 +1,68 @@
+<section class="container-planner">
+  <div class="container-label">
+    <h1><%= @category.name.capitalize %></h1>
+  </div>
+
+  <div class="container-stats">
+    <div class="sub-container-stats">
+      <h1>123</h1>
+      <h4>Label</h4>
+    </div>
+
+    <div class="sub-container-stats">
+      <h1>123</h1>
+      <h4>Label</h4>
+    </div>
+
+    <div class="sub-container-stats">
+      <h1>123</h1>
+      <h4>Label</h4>
+    </div>
+
+    <div class="sub-container-stats">
+      <h1>123</h1>
+      <h4>Label</h4>
+    </div>
+  </div>
+
+  <div class="container-label">
+    <h1>Overall Tasks</h1>
+
+    <div class="form-filter_by">
+      <h3>Filter By</h3>
+    </div>
+  </div>
+
+  <div class="sub-container-task_cards">
+  <% @tasks.each do |task| %>
+    <%= render partial: 'components/task-card', locals: {category_name: @category.name, task: task} %>
+  <% end %>
+  </div>
+</section>
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

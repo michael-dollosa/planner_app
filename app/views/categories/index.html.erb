@@ -3,30 +3,59 @@
     <h1>Planner Dashboard</h1>
   </div>
 
-  <div class="container-stats">
-    <div class="sub-container-stats">
-      <h1>123</h1>
-      <h4>Label</h4>
-    </div>
+  <div class="container-header-section">
+    <div class="container-header-stats">
+      <div class="container-header-label">
+        <h2>Categories</h2>
+      </div>
+      <div class="sub-container-header-stats">
+        <% @categories.each do |category| %>
+          <%= render partial: 'components/category-card', locals: {category: category }%>
+        <% end %>
 
-    <div class="sub-container-stats">
-      <h1>123</h1>
-      <h4>Label</h4>
+        <%# end %>
+      </div>
     </div>
+    <div class="container-header-stats">
+      <div class="container-header-label">
+        <h2>Status</h2>
+      </div>
+      <div class="sub-container-header-stats">
+        <div class="category-card">
+          <div class="category-data">
+            <h3>New</h3>
+          </div>
+          <div class="category-data-actual">
+            <h1><%= @tasks.where(status: "new").count %></h1>
+          </div>
+        </div>
 
-    <div class="sub-container-stats">
-      <h1>123</h1>
-      <h4>Label</h4>
-    </div>
+        <div class="category-card">
+          <div class="category-data">
+            <h3>Ongoing</h3>
+          </div>
+          <div class="category-data-actual">
+            <h1><%= @tasks.where(status: "ongoing").count %></h1>
+          </div>
+        </div>
 
-    <div class="sub-container-stats">
-      <h1>123</h1>
-      <h4>Label</h4>
+        <div class="category-card">
+          <div class="category-data">
+            <h3>Completed</h3>
+          </div>
+          <div class="category-data-actual">
+            <h1><%= @tasks.where(status: "completed").count %></h1>
+          </div>
+        </div>
+
+        
+      </div>
     </div>
   </div>
+  
 
   <div class="container-label">
-    <h1>Overall Tasks</h1>
+    <h2>Overall Tasks</h2>
 
     <div class="form-filter_by">
       <h3>Filter By</h3>

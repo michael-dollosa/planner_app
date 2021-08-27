@@ -53,6 +53,12 @@
   justify-content: space-evenly;
 }
 
+@mixin card-border-shadow{
+  // box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+  background-color: white;
+}
+
 @mixin action-btn($bg) {
   color: white;
   text-decoration: none;
@@ -70,26 +76,36 @@
   } 
 }
 
+@mixin border-light{
+  border-bottom: 1px solid rgba(221, 221, 221, 0.671);
+}
+
 html {
   font-size: 62.5%;
   font-family: 'Open Sans', sans-serif;
 }
 
 body{
+  background-color: rgb(249, 252, 255);
   width: 100%;
-  display: flex;
+  @include flex-col-center();
 
-  >nav{
-    background-color: burlywood;
-    height: 100vh;
-    position: fixed;
-    width: 20rem;
-  }
+  // >nav{
+  //   background-color: burlywood;
+  //   height: 100vh;
+  //   position: fixed;
+  //   width: 20rem;
+  // }
 
   >main{
-    margin-left: 20rem;
-    width: calc(100% - 200px)
+    width: 80%;
   }
+}
+
+a, a:hover{
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 button{
@@ -106,27 +122,125 @@ button{
   // background-color: blanchedalmond;
   width: 100%;
   padding: 3vw;
+  >.container-header-section{
+    width: 100%;
+    // background-color: blueviolet;
+    @include flex-row-between;
+    >*{
+      width: 60%;
+    }
+    >*:not(:first-child){
+      width: 30%;
+    }
+    >.container-header-stats{
+      
+      @include flex-col;
+      margin-bottom: 3rem;
+      
+
+      >.container-header-label{
+        @include flex-row;
+        margin-bottom: 1rem;
+      }
+
+      >.container-header-label >h1{
+        font-size: 2.5rem;
+        font-weight: 700;
+      }
+    
+      >.container-header-label >h2{
+        font-size: 2rem;
+      }
+    }
+    >.container-header-stats >.sub-container-header-stats::-webkit-scrollbar {
+      display: none;
+    }
+
+    >.container-header-stats >.sub-container-header-stats{
+      width: 100%;
+      height: calc( (70vw/5) + 4rem );
+      padding: 1rem;
+      @include card-border-shadow;
+      overflow-y: scroll;
+
+      >*:not(:last-child){
+        @include border-light();
+      }
+
+      >h1{
+        font-size: 3rem;
+        font-weight: 500;
+      }
+      >h4{
+        font-size: 1rem;
+        font-weight: 300;
+      }
+    }
+    >.container-header-stats >.sub-container-header-stats >.category-card{
+      width: 100%;
+      padding: 1rem 1.5rem;
+      @include flex-row-between();
+
+      >.category-data{
+        >h1{
+          font-size: 1.7rem;
+          font-weight: 500;
+        }
+        >h3{
+          font-size: 1.4rem;
+          font-weight: 500;
+        }
+      }
+      >.category-data-actual{
+        >h1{
+          font-size: 4rem;
+          font-weight: 500;
+        }
+      }
+      
+
+      >.category-action{
+        @include flex-row;
+        flex-direction: row-reverse;
+        >.edit{
+          margin-right: 1rem;
+          @include action-btn(#2ecc71);
+        }  
+        >.delete{
+          @include action-btn(#e74c3c);
+        }
+      }
+    }
+  }
 
   >.container-label{
     @include flex-row;
     justify-content: space-between;
+    margin-bottom: 3rem;
   }
+
   >.container-label >h1{
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+
+  >.container-label >h2{
     font-size: 2rem;
   }
 
   >.container-stats{
+    // background-color: khaki;
     padding: .5rem;
     @include flex-row-even;
     flex-wrap: wrap;
+    margin-bottom: 3rem;
   }
 
   >.container-stats >.sub-container-stats{
-    @include flex-col-center;
-    border: 1px solid black;
-    // width: 12rem;
-    width: calc(70vw/4);
-    height: calc( (70vw/8) + 4rem );
+    @include flex-col;
+    @include card-border-shadow;
+    width: calc(70vw/2);
+    height: calc( (70vw/5) + 4rem );
     border-radius: 1rem;
     padding: 1rem;
 
@@ -141,21 +255,32 @@ button{
   }
 
   >.sub-container-task_cards{
-    // background-color: brown;
+    @include card-border-shadow();
+    border-radius: 1rem;
+    
+    >*:not(:last-child){
+      position: relative;
+
+    }
+    >*:not(:last-child)::after{
+      content: '';
+      position: absolute;
+      width: 96%;
+      bottom: 0;
+      left: 2%;
+      @include border-light();
+    }
   }
 
   >.sub-container-task_cards >.task-card-container{
-    border: 1px solid black;
-    border-radius: 1rem;
-    padding: 1rem 3rem;
-    margin-bottom: 1rem;
+    padding: 2rem 3rem;
   }
   >.sub-container-task_cards >.task-card-container >.card-details{
     @include flex-row-between();
     // background-color: violet;
 
     >*:not(:last-child){
-      width: 10%;
+      width: 50%;
     }
 
     >:last-child{
@@ -166,7 +291,7 @@ button{
       // background-color: blue;
       @include flex-row;
       // flex-grow: .7;
-      width: 30vw;
+      width: 35vw;
 
       >.status{
         width: 15%;
@@ -198,6 +323,13 @@ button{
       flex-direction: row-reverse;
       >.edit{
         margin-right: 1rem;
+      }
+      >.edit{
+        @include action-btn(#2ecc71);
+      }
+      
+      >.delete{
+        @include action-btn(#e74c3c);
       }
     }
   }
