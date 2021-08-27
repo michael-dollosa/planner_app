@@ -16,7 +16,8 @@ class CategoriesController < ApplicationController
   end
 
   def show
-
+    @category = Category.find(params[:id])
+    @tasks = @category.tasks
   end
 
   def edit

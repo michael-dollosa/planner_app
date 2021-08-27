@@ -5,7 +5,7 @@ class TasksController < ApplicationController
   def new
     @task = Task.new()
   end
-  
+
   def create
     @task = Task.new(task_params)
     @task.category_id = params[:category_id]
@@ -28,6 +28,7 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     @task.delete
+    redirect_back(fallback_location: categories_path)
   end
 
   private

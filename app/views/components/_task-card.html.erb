@@ -16,7 +16,7 @@
     </div>
 
     <div class="action-icon">
-      <%= link_to 'Delete', category_task_path(category_id: task.category_id, id: task.id), method: :delete, class: "delete", data: {confirm: "sure ka na bes?"} %>
+      <%= link_to 'Delete', category_task_path(category_id: task.category_id, id: task.id), method: :delete, class: "delete", data: {confirm: "Any progress on this task will be deleted once you confirm", commit: 'Delete'} %>
       <%= link_to 'Edit', categories_path, class: "edit" %>
     </div>
   </div>
