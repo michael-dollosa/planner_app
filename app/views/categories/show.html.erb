@@ -1,8 +1,8 @@
 <section class="container-planner">
   <div class="container-label">
     <div class="container-sub-label">
-      <h1><%= @category.name.capitalize %> Dashboard</h1>
-      <h3><%= @category.description.capitalize %></h3>
+      <h1><%= @category.name&.capitalize %> Dashboard</h1>
+      <h3><%= @category.description&.capitalize %></h3>
     </div>
     
   </div>
@@ -59,9 +59,8 @@
 
   <div class="container-label">
     <h2>Overall Tasks</h2>
-
-    <div class="form-filter_by">
-      <h3>Filter By</h3>
+    <div class="add-category-container">
+      <%= link_to '+ Add Task', new_category_task_path(category_id: @category.id), {remote: true, 'data-toggle' =>  "modal", 'data-target' => '#categoryModal', class: "submit" } %>
     </div>
   </div>
 

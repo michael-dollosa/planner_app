@@ -4,6 +4,10 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new()
+    respond_to do |format|
+      format.html
+      format.js 
+    end
   end
 
   def create
@@ -11,6 +15,7 @@ class TasksController < ApplicationController
     @task.status = "new"
     @task.category_id = params[:category_id]
     @task.save
+    redirect_back(fallback_location: categories_path)
   end
 
   def show
@@ -18,12 +23,17 @@ class TasksController < ApplicationController
   end
   
   def edit
-  
+    @task = Task.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.js 
+    end
   end
 
   def update
     @task = Task.find(params[:id])
     @task.update(task_params)
+    redirect_back(fallback_location: categories_path)
   end
 
   def destroy

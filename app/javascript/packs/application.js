@@ -8,11 +8,11 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-
+import $ from 'jquery'
 Rails.start()
 require('data-confirm-modal')
 Turbolinks.start()
 ActiveStorage.start()
 
-window.jQuery = $;
-window.$ = $;
+global.$ = jQuery;
+

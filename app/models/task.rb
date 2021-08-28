@@ -1,5 +1,7 @@
 class Task < ApplicationRecord
   belongs_to :category
+
+  before_save { self.status = status.downcase }
   validates :title, presence: true
   validates :body, presence: true
   validates :status, presence: true

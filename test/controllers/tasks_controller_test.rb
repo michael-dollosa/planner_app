@@ -31,7 +31,7 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
       post category_tasks_path(@category.id), params: { task: { title: "Test Task", body: "Test Task Desc", status: "new", due_date: Time.at(0.0 + rand(1..1.1) * (Time.now.to_f - 0.0.to_f)) } }
     end
 
-    assert_response :success
+    assert_response :redirect
   end 
 
   test "Action:Show should be able to show task" do

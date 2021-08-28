@@ -65,7 +65,7 @@
   padding:5px 10px;
   border-radius:3px;
   font-family: inherit;
-  font-size: 1rem;
+  font-size: 1.1rem;
   background: $bg;
   &:hover {
     background:darken($bg,8%);
@@ -378,8 +378,14 @@ form{
   >*{
     margin-bottom: 1rem;
   }
+  >label{
+    font-family: inherit;
+    font-size: 1.2rem;
+  }
+
   >input,
-  textarea{
+  textarea,
+  select{
     outline: none;
     font-family: inherit;
     font-size: 1.3rem;
@@ -397,6 +403,7 @@ form{
 #modal-content{
   max-width: 40rem;
 }
-#addCategoryModalTitle{
-  font-size: 2rem;
+#addCategoryModalTitle,
+#editCategoryModalTitle{
+  font-size: 1.8rem;
 }

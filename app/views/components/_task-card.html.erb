@@ -17,7 +17,7 @@
 
     <div class="action-icon">
       <%= link_to 'Delete', category_task_path(category_id: task.category_id, id: task.id), method: :delete, class: "delete", data: {confirm: "Any progress on this task will be deleted once you confirm", commit: 'Delete'} %>
-      <%= link_to 'Edit', categories_path, class: "edit" %>
+      <%= link_to 'Edit', edit_category_task_path(category_id: task.category_id, id: task.id), {remote: true, 'data-toggle' =>  "modal", 'data-target' => '#categoryModal', class: "edit" } %>
     </div>
   </div>
   <div class="card-border-bottom"></div>
