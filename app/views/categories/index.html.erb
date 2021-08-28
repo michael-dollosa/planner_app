@@ -69,6 +69,16 @@
     <%= render partial: 'components/task-card', locals: {category_name: task.category.name, task: task} %>
   <% end %>
   </div>
+
+  <div class="container-label">
+    <h2>Overall Tasks</h2>
+  </div>
+
+  <div class="sub-container-task_cards">
+  <% @tasks.each do |task| %>
+    <%= render partial: 'components/task-card', locals: {category_name: task.category.name, task: task} %>
+  <% end %>
+  </div>
 </section>
 
 

@@ -280,7 +280,7 @@ button{
   >.sub-container-task_cards{
     @include card-border-shadow();
     border-radius: 1rem;
-    
+    margin-bottom: 3rem;
     >*:not(:last-child){
       position: relative;
 
