@@ -84,6 +84,7 @@
 html {
   font-size: 62.5%;
   font-family: 'Open Sans', sans-serif;
+  // overflow-y: scroll;
 }
 
 body{
@@ -404,6 +405,8 @@ form{
   max-width: 40rem;
 }
 #addCategoryModalTitle,
-#editCategoryModalTitle{
+#editCategoryModalTitle,
+#editTaskModalTitle,
+#addTaskModalTitle{
   font-size: 1.8rem;
 }
