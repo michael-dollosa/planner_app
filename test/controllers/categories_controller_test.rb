@@ -39,11 +39,6 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "Action:New should render category new page" do
-    get new_category_path
-    assert_response :success
-  end
-
   test "Action:Create should be able to create new category" do
     assert_difference 'Category.count', 1 do
       post categories_path, params: { category: { name: "Test Category", description: "Test Desc" } }
