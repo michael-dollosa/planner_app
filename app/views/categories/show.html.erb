@@ -1,8 +1,11 @@
 <section class="container-planner">
   <div class="container-label">
-    <h1>Planner Dashboard</h1>
+    <div class="container-sub-label">
+      <h1><%= @category.name.capitalize %> Dashboard</h1>
+      <h3><%= @category.description.capitalize %></h3>
+    </div>
+    
   </div>
-
   <div class="container-header-section">
     <div class="container-header-stats">
       <div class="container-header-label">
