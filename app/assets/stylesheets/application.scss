@@ -70,6 +70,7 @@
   &:hover {
     background:darken($bg,8%);
     transition: all 0.3s ease;
+    color: white;
   }
   &:active {
     background:darken($bg,25%);
@@ -139,8 +140,13 @@ button{
       
 
       >.container-header-label{
-        @include flex-row;
+        @include flex-row-between();
         margin-bottom: 1rem;
+
+        >.add-category-container{
+          @include flex-row();
+          flex-direction: row-reverse;
+        }
       }
 
       >.container-header-label >h1{
@@ -166,6 +172,8 @@ button{
       >*:not(:last-child){
         @include border-light();
       }
+
+      
 
       >h1{
         font-size: 3rem;
@@ -367,5 +375,14 @@ form{
   >input[type="submit"]{
     font-family: inherit;
     font-size: 1.3rem;
+    margin-top: 1rem;
+    padding: 1rem;
   }
+}
+
+#modal-content{
+  max-width: 40rem;
+}
+#addCategoryModalTitle{
+  font-size: 2rem;
 }

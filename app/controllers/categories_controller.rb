@@ -7,12 +7,17 @@ class CategoriesController < ApplicationController
 
   def new
     @category = Category.new
+    respond_to do |format|
+      format.html
+      format.js 
+    end
   end
 
   def create
     @category = Category.new(category_params)
     @category.save
     #specify return redirect later
+    redirect_back(fallback_location: categories_path)
   end
 
   def show
@@ -22,12 +27,17 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-
+    @category = Category.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.js 
+    end
   end
 
   def update
     @category = Category.find(params[:id])
     @category.update(category_params)
+    redirect_back(fallback_location: categories_path)
   end
 
   def destroy
