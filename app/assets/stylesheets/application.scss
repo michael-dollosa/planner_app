@@ -376,6 +376,7 @@ form{
   @include flex-col();
   //input type text, date, 
   font-family: inherit;
+  padding: 1rem;
   >*{
     margin-bottom: 1rem;
   }
