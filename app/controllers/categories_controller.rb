@@ -3,6 +3,7 @@ class CategoriesController < ApplicationController
   def index
     @categories = Category.all
     @tasks = Task.all
+    @tasks_today = Task.all.where('due_date < ?', DateTime.now)
   end
 
   def new
