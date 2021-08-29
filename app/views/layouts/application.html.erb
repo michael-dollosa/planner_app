@@ -14,12 +14,21 @@
       <%= yield %>
     </main>
 
-
+  <%# general modal %>
   <div id="categoryModal" class="modal hide fade" aria-labelledby="exampleModalLabel" aria-hidden="true" role="dialog">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
       <div class="modal-content" id="modal-content">
       </div>
     </div>
   </div>
+
+  <%# show modal %>
+  <div id="showModal" class="modal hide fade" aria-labelledby="exampleModalLabel" aria-hidden="true" role="dialog">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+      <div class="modal-content" id="modal-content">
+      </div>
+    </div>
+  </div>
+
   </body>
 </html>

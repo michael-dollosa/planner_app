@@ -6,79 +6,95 @@
     </div>
   </div>
 
-  <div class="container-header-section">
-    <div class="container-header-stats">
-      <div class="container-header-label">
-        <h2>Categories</h2>
-        <div class="add-category-container">
-          <%= link_to '+ Add Category', new_category_path, {remote: true, 'data-toggle' =>  "modal", 'data-target' => '#categoryModal', class: "submit" } %>
+  <section class="container-main-body">
+    <div class="container-header-section">
+      <div class="container-header-stats">
+        <div class="container-header-label">
+          <h2>Categories</h2>
+          <div class="add-category-container">
+            <%= link_to '+ Add Category', new_category_path, {remote: true, 'data-toggle' =>  "modal", 'data-target' => '#categoryModal', class: "submit" } %>
+          </div>
+        </div>
+        <div class="sub-container-header-stats-category">
+          <% @categories.each do |category| %>
+              <%= render partial: 'components/category-card', locals: {category: category }%>
+          <% end %>
+
+          <%# end %>
         </div>
       </div>
-      <div class="sub-container-header-stats">
-        <% @categories.each do |category| %>
-          <%= render partial: 'components/category-card', locals: {category: category }%>
+      <div class="container-header-stats">
+        <div class="container-header-label">
+          <h2>Status</h2>
+        </div>
+        <div class="sub-container-header-stats">
+          <div class="category-card">
+            <div class="category-data">
+              <h3>New</h3>
+            </div>
+            <div class="category-data-actual">
+              <h1><%= @tasks.where(status: "new").count %></h1>
+            </div>
+          </div>
+
+          <div class="category-card">
+            <div class="category-data">
+              <h3>Ongoing</h3>
+            </div>
+            <div class="category-data-actual">
+              <h1><%= @tasks.where(status: "ongoing").count %></h1>
+            </div>
+          </div>
+
+          <div class="category-card">
+            <div class="category-data">
+              <h3>Completed</h3>
+            </div>
+            <div class="category-data-actual">
+              <h1><%= @tasks.where(status: "completed").count %></h1>
+            </div>
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+    
+    <div class="container-body-section">
+      <div class="container-label">
+        <h2>Tasks due today</h2>
+      </div>
+
+      <div class="sub-container-task_cards">
+        <% if @tasks_today.nil? || @tasks_today&.count == 0 %>
+          <div class="task-card-container">
+            <h3>No tasks due for today</h3>
+          </div>
         <% end %>
+        <% @tasks_today&.each do |task| %>
+          <%= render partial: 'components/task-card', locals: {category_name: task.category.name, task: task} %>
+        <% end %>
+      </div>
 
-        <%# end %>
+      <div class="container-label">
+        <h2>Overall Tasks</h2>
+      </div>
+
+      <div class="sub-container-task_cards">
+        <% if @tasks.nil? || @tasks&.count == 0 %>
+          <div class="task-card-container">
+            <h3>No tasks created</h3>
+          </div>
+        <% end %>
+        <% @tasks&.each do |task| %>
+          <%= render partial: 'components/task-card', locals: {category_name: task.category.name, task: task} %>
+        <% end %>
       </div>
     </div>
-    <div class="container-header-stats">
-      <div class="container-header-label">
-        <h2>Status</h2>
-      </div>
-      <div class="sub-container-header-stats">
-        <div class="category-card">
-          <div class="category-data">
-            <h3>New</h3>
-          </div>
-          <div class="category-data-actual">
-            <h1><%= @tasks.where(status: "new").count %></h1>
-          </div>
-        </div>
+    
+  </section>
 
-        <div class="category-card">
-          <div class="category-data">
-            <h3>Ongoing</h3>
-          </div>
-          <div class="category-data-actual">
-            <h1><%= @tasks.where(status: "ongoing").count %></h1>
-          </div>
-        </div>
-
-        <div class="category-card">
-          <div class="category-data">
-            <h3>Completed</h3>
-          </div>
-          <div class="category-data-actual">
-            <h1><%= @tasks.where(status: "completed").count %></h1>
-          </div>
-        </div>
-
-        
-      </div>
-    </div>
-  </div>
   
-
-  <div class="container-label">
-    <h2>Tasks due today</h2>
-  </div>
-
-  <div class="sub-container-task_cards">
-  <% @tasks_today.each do |task| %>
-    <%= render partial: 'components/task-card', locals: {category_name: task.category.name, task: task} %>
-  <% end %>
-  </div>
-
-  <div class="container-label">
-    <h2>Overall Tasks</h2>
-  </div>
-
-  <div class="sub-container-task_cards">
-  <% @tasks.each do |task| %>
-    <%= render partial: 'components/task-card', locals: {category_name: task.category.name, task: task} %>
-  <% end %>
-  </div>
 </section>
 
 

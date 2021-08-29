@@ -1,0 +1,5 @@
+$("#showModal").find(".modal-content").html("<%= j render partial: 'tasks/show' %>");
+
+$("#taskEdit").click(function() {
+  $("#showModal").modal("hide")
+})
