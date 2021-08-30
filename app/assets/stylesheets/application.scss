@@ -521,6 +521,20 @@ button{
   @include action-btn-black(rgb(26, 26, 26));
 }
 
+.signin{
+  border: none;
+  @include action-btn-black(rgb(26, 26, 26));
+  padding: 1rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.login{
+  padding: 1rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
 .new{
   color: #bda107;
 }

@@ -14,7 +14,12 @@
     <nav class="navbar">
       <%= link_to 'PLANO', root_path, class: "text-logo" %>
       <section class="nav-user">
-        <h3>Login</h3>
+      <% if user_signed_in? %>
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'login' %>
+      <% else %>
+        <%= link_to 'Login', new_user_session_path, class: 'login' %>
+        <%= link_to 'Try Plano for free', new_user_registration_path, class: 'signin' %>
+      <% end %>
       </section>
     </nav>
     <main>

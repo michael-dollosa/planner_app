@@ -1,9 +1,11 @@
 class CategoriesController < ApplicationController
-
+  #devise
+  before_action :authenticate_user!
+  
   def index
-    @categories = Category.all.order("id")
-    @tasks = Task.all.order("due_date ASC")
-    @tasks_today = Task.all.where('due_date <= ?', DateTime.now).order("due_date ASC").order("due_date ASC")
+    @categories = current_user.categories.all.order("id")
+    @tasks = current_user.tasks
+    @tasks_today = current_user.tasks.all.where('due_date <= ?', DateTime.now).order("due_date ASC").order("due_date ASC")
   end
 
   def new
@@ -16,6 +18,7 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
+    @category.user_id = current_user.id
     @category.save
     if @category.save 
       #specify return redirect later
@@ -64,5 +67,15 @@ class CategoriesController < ApplicationController
 
   def category_params
     params.require(:category).permit(:name, :description)
+  end
+
+  def get_tasks
+    tasks = []
+    current_user.categories.all.each do |category|
+      tasks << category.tasks
+      tasks.flatten
+      p "#{tasks}"
+    end
+    return tasks.flatten
   end
 end

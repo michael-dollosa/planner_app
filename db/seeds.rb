@@ -58,24 +58,28 @@ end
 Category.all.each do |category|
   category.tasks.create!([
     {
+      user_id: category.user_id,
       title: "#{category.name.capitalize} Task 1",
       body: "#{category.name.capitalize} Task 1 body",
       status: "new",
       due_date: Time.at(0.0 + rand(1..1.1) * (Time.now.to_f - 0.0.to_f))
     },
     {
+      user_id: category.user_id,
       title: "#{category.name.capitalize} Task 2",
       body: "#{category.name.capitalize} Task 2 body",
       status: "ongoing",
       due_date: Time.at(0.0 + rand(1..1.1) * (Time.now.to_f - 0.0.to_f))
     },
     {
+      user_id: category.user_id,
       title: "#{category.name.capitalize} Task 3",
       body: "#{category.name.capitalize} Task 3 body",
       status: "completed",
       due_date: Time.at(0.0 + rand(1..1.1) * (Time.now.to_f - 0.0.to_f))
     },
     {
+      user_id: category.user_id,
       title: "#{category.name.capitalize} Task 4",
       body: "#{category.name.capitalize} Task 4 body",
       status: "new",

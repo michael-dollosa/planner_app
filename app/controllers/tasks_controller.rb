@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   
-  #new is not created since we would render a form inside a different erb file
-
+  #devise
+  before_action :authenticate_user!
   def new
     @task = Task.new()
     respond_to do |format|
@@ -13,6 +13,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     @task.status = "new"
+    @task.user_id = current_user.id
     @task.category_id = params[:category_id]
     @task.save
 

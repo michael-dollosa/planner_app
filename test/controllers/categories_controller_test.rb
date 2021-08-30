@@ -4,7 +4,9 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
   def setup
     Category.delete_all
     Task.delete_all
+    sign_in users(:one)
   end
+
   #initial routes testing
   test "Testing for route:index" do
     assert_routing categories_path, controller: 'categories', action: 'index'
@@ -36,7 +38,7 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
 
   #controller data test
   test "Action:Index should show all Categories" do
-    Category.new(name: "Loask123", description: "Test Food Category").save
+    Category.new(name: "Loask123", description: "Test Food Category", user_id: users(:one).id).save
     @categories = Category.all
     get categories_path
     assert_response :success
@@ -44,26 +46,27 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
 
   test "Action:Create should be able to create new category" do
     assert_difference 'Category.count', 1 do
-      post categories_path, params: { category: { name: "Te9712ks", description: "Test Desc" } }
+      post categories_path, params: { category: { name: "1232asdasd", description: "Test Desc", user_id: users(:one).id} }
     end
   end
 
   test "Action:Update should be able to update specific category" do
-    category = Category.new(name: "Lasd9102", description: "Test Food Category")
+    category = Category.new(name: "123asdasd", description: "Test Food Category", user_id: users(:one).id)
     category.save
+    p "Test update: #{category}"
     assert category.save
 
     new_category_name = "Updated Name"
     new_category_desc = "Updated Body"
     
-    put category_path(category), params: { category: { name: new_category_name, description: new_category_desc } }
+    put category_path(category), params: { category: { name: "Updated Name", description: "Updated Body", user_id: users(:one).id } }
 
     assert_equal new_category_name.downcase, Category.find(category.id).name.downcase
     assert_equal new_category_desc, Category.find(category.id).description
   end
 
-  test "Action:Delete should be able to create new category" do
-    category = Category.new(name: "Mkas123", description: "Test Food Category")
+  test "Action:Delete should be able to delete category" do
+    category = Category.new(name: "Mkas123", description: "Test Food Category", user_id: users(:one).id)
     category.save
     assert category.save
 

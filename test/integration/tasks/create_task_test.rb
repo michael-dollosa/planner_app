@@ -2,7 +2,8 @@ require 'test_helper'
 
 class CreateTaskTest < ActionDispatch::IntegrationTest
   def setup
-    @category = Category.new(name: "Food321312", description: "Test Food Category")
+    sign_in users(:one)
+    @category = Category.new(name: "Food321312", description: "Test Food Category", user_id: users(:one).id)
     @category.save
   end
 

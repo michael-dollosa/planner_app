@@ -5,7 +5,8 @@ class CategoryTest < ActiveSupport::TestCase
   #   assert true
   # end
   def setup
-    @category = Category.new(name: "Food", description: "Test Food Category")
+    sign_in users(:one)
+    @category = Category.new(name: "Food", description: "Test Food Category", user_id: users(:one).id)
   end
 
   test "Should not be able to create category without name and title" do
@@ -16,14 +17,14 @@ class CategoryTest < ActiveSupport::TestCase
   test "Should not be able to create duplicate category" do
     @category.name = "TEst"
     @category.save
-    category_duplicate = Category.new(name: "Test", description: "test desc")
+    category_duplicate = Category.new(name: "Test", description: "test desc", user_id: users(:one).id)
     assert_not category_duplicate.save, "Created duplicate category"
   end
 
   test "Should not be able to create unique category" do
     @category.save
-    category_duplicate = Category.new(name: "T3st", description: "test desc")
-    assert category_duplicate.save, "Was not able to create unique category"
+    category_duplicate = Category.new(name: "Food", description: "test desc", user_id: users(:one).id)
+    assert_not category_duplicate.save, "Was able to create unique category"
   end
 
 end

@@ -2,7 +2,8 @@ require 'test_helper'
 
 class EditTaskTest < ActionDispatch::IntegrationTest
   def setup
-    @category = Category.new(name: "Foodasdasdasd198", description: "Test Food Category")
+    sign_in users(:one)
+    @category = Category.new(name: "Foodasdasdasd198", description: "Test Food Category", user_id: users(:one).id)
     @category.save
   end
 
@@ -11,7 +12,7 @@ class EditTaskTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     #create task
-    @category.tasks.new(title: "Task under Food", body: "Food Body", status: "new", due_date: Time.at(0.0 + rand(1..1.1) * (Time.now.to_f - 0.0.to_f))).save
+    @category.tasks.new(user_id: users(:one).id, title: "Task under Food", body: "Food Body", status: "new", due_date: Time.at(0.0 + rand(1..1.1) * (Time.now.to_f - 0.0.to_f))).save
     new_task_title = "Updated Title"
     new_task_body = "Updated Body"
 
