@@ -15,7 +15,13 @@ class TasksController < ApplicationController
     @task.status = "new"
     @task.category_id = params[:category_id]
     @task.save
-    redirect_back(fallback_location: categories_path)
+
+    if @task.save
+      redirect_back fallback_location: categories_path, success: "Successfully created a task"
+    else
+      redirect_back fallback_location: categories_path, danger: "Kindly double check all information before submitting"
+    end
+    
   end
 
   def show
@@ -37,7 +43,13 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     @task.update(task_params)
-    redirect_back(fallback_location: categories_path)
+    
+
+    if @task.update(task_params)
+      redirect_back fallback_location: categories_path, success: "Successfully updated task"
+    else
+      redirect_back fallback_location: categories_path, danger: "Kindly double check all information before submitting"
+    end
   end
 
   def destroy
