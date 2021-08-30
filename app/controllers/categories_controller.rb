@@ -1,9 +1,9 @@
 class CategoriesController < ApplicationController
 
   def index
-    @categories = Category.all
-    @tasks = Task.all
-    @tasks_today = Task.all.where('due_date <= ?', DateTime.now)
+    @categories = Category.all.order("id")
+    @tasks = Task.all.order("due_date ASC")
+    @tasks_today = Task.all.where('due_date <= ?', DateTime.now).order("due_date ASC").order("due_date ASC")
   end
 
   def new
@@ -27,10 +27,10 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @categories = Category.all
-    @tasks = @category.tasks
+    @categories = Category.all.order("id")
+    @tasks = @category.tasks.order("due_date ASC")
     @current_category_id = params[:id]
-    @tasks_today = Task.all.where('due_date <= ?', DateTime.now-1)
+    @tasks_today = Task.all.where('due_date <= ?', DateTime.now-1).order("due_date ASC")
   end
 
   def edit
