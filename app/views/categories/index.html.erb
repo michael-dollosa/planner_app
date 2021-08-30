@@ -16,11 +16,17 @@
           </div>
         </div>
         <div class="sub-container-header-stats-category">
+          <% if @categories.nil? || @categories.count == 0%>
+            <div class="category-card">
+              <div class="category-data">
+                <h2>Create category to begin your planning</h2>
+              </div>
+            </div>
+          <% else %>
           <% @categories.each do |category| %>
               <%= render partial: 'components/category-card', locals: {category: category }%>
           <% end %>
-
-          <%# end %>
+          <% end %>
         </div>
       </div>
       <div class="container-header-stats">
@@ -70,9 +76,10 @@
           <div class="task-card-container">
             <h3>No tasks due for today</h3>
           </div>
-        <% end %>
-        <% @tasks_today&.each do |task| %>
+        <% else %>
+        <% @tasks_today.each do |task| %>
           <%= render partial: 'components/task-card', locals: {category_name: task.category.name, task: task} %>
+        <% end %>
         <% end %>
       </div>
 
@@ -85,9 +92,10 @@
           <div class="task-card-container">
             <h3>No tasks created</h3>
           </div>
-        <% end %>
-        <% @tasks&.each do |task| %>
+        <% else %>
+        <% @tasks.each do |task| %>
           <%= render partial: 'components/task-card', locals: {category_name: task.category.name, task: task} %>
+        <% end %>
         <% end %>
       </div>
     </div>

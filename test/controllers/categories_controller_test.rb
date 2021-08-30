@@ -1,7 +1,10 @@
 require "test_helper"
 
 class CategoriesControllerTest < ActionDispatch::IntegrationTest 
-  
+  def setup
+    Category.delete_all
+    Task.delete_all
+  end
   #initial routes testing
   test "Testing for route:index" do
     assert_routing categories_path, controller: 'categories', action: 'index'
@@ -33,20 +36,20 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
 
   #controller data test
   test "Action:Index should show all Categories" do
-    # Category.new(name: "Food", description: "Test Food Category").save
-    # @categories = Category.all
+    Category.new(name: "Loask123", description: "Test Food Category").save
+    @categories = Category.all
     get categories_path
     assert_response :success
   end
 
   test "Action:Create should be able to create new category" do
     assert_difference 'Category.count', 1 do
-      post categories_path, params: { category: { name: "Test Category", description: "Test Desc" } }
+      post categories_path, params: { category: { name: "Te9712ks", description: "Test Desc" } }
     end
   end
 
   test "Action:Update should be able to update specific category" do
-    category = Category.new(name: "Food", description: "Test Food Category")
+    category = Category.new(name: "Lasd9102", description: "Test Food Category")
     category.save
     assert category.save
 
@@ -60,7 +63,7 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "Action:Delete should be able to create new category" do
-    category = Category.new(name: "Food", description: "Test Food Category")
+    category = Category.new(name: "Mkas123", description: "Test Food Category")
     category.save
     assert category.save
 

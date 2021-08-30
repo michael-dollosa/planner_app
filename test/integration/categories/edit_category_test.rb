@@ -2,17 +2,14 @@ require 'test_helper'
 
 class EditCategoryTest < ActionDispatch::IntegrationTest
 
-  test "should be able to edit category on index page" do
-    #go to index page
-    get categories_path
-    assert_response :success
-    
-    #create category to be edited for testing
-    category = Category.new(name: "Food", description: "Test Food Category")
+  test "should be able to edit category on show page" do
+    category = Category.new(name: "Food68787", description: "Test Food Category")
     category.save
     assert category.save
 
-    #variable to compare edited params
+    get category_path(category.id)
+    assert_response :success
+
     new_category_name = "Updated Name"
     new_category_desc = "Updated Body"
     
@@ -20,8 +17,7 @@ class EditCategoryTest < ActionDispatch::IntegrationTest
 
     assert_equal new_category_name.downcase, Category.find(category.id).name.downcase
     assert_equal new_category_desc, Category.find(category.id).description
-
-    assert_response :redirect
+    
   end
   
 end

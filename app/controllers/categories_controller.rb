@@ -23,7 +23,6 @@ class CategoriesController < ApplicationController
     else
       redirect_to @category, danger: "Invalid name or description", fallback_location: categories_path
     end
-    
   end
 
   def show

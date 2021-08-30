@@ -204,6 +204,7 @@ button{
     }
     >.container-header-section,
     >.container-body-section{
+
       width: 45%;
       @media only screen and (max-width: 1000px) {
         width: 100%;
@@ -239,6 +240,7 @@ button{
           @include border-light();
         }
       }
+      
   
       >.container-header-stats >.sub-container-header-stats,
       >.container-header-stats >.sub-container-header-stats-category{
@@ -274,6 +276,10 @@ button{
           >h1{
             font-size: 1.7rem;
             font-weight: 500;
+          }
+          >h2{
+            font-size: 1.7rem;
+            font-weight: 300;
           }
           >h3{
             font-size: 1.4rem;
@@ -607,4 +613,104 @@ form{
   align-content: center;
   padding: 1rem;
   width: 92%;
+}
+
+
+
+//animations
+
+/* animations */
+@keyframes moveInBottom {
+  /* start of animation */
+  0% {
+      opacity: 0;
+      transform: translateY(5rem); /* animate in X direction */
+  }
+
+  /* end of animation */
+  100% {
+      opacity: 1;
+      transform: translate(0); /* translate 0 means to be in the original position*/
+  }
+}
+
+@keyframes moveInTop {
+  /* start of animation */
+  0% {
+      opacity: 0;
+      transform: translateY(-5rem); /* animate in X direction */
+  }
+
+  /* end of animation */
+  100% {
+      opacity: 1;
+      transform: translate(0); /* translate 0 means to be in the original position*/
+  }
+}
+
+@keyframes moveInLeft {
+  /* start of animation */
+  0% {
+      opacity: 0;
+      transform: translateX(-2rem); /* animate in X direction */
+  }
+
+  100% {
+      opacity: 1;
+      transform: translate(0); /* translate 0 means to be in the original position*/
+  }
+}
+
+
+@keyframes moveInRight {
+  /* start of animation */
+  0% {
+      opacity: 0;
+      transform: translateX(10rem); /* animate in X direction */
+  }
+
+  80% {
+      opacity: 1;
+      transform: translateX(-1rem); /* animate in X direction */
+  }
+
+  /* end of animation */
+  100% {
+      opacity: 1;
+      transform: translate(0); /* translate 0 means to be in the original position*/
+  }
+}
+
+@keyframes moveIn {
+  /* start of animation */
+  0% {
+      opacity: 0;
+  }
+
+  80% {
+      opacity: 1;
+  }
+}
+
+@keyframes moveout {
+  /* start of animation */
+  0% {
+      opacity: 1;
+  }
+
+  80% {
+      opacity: 0;
+  }
+}
+
+@keyframes rotate180 {
+  /* start of animation */
+  0% {
+      transform: rotate(-10deg); /* animate in X direction */
+  }
+
+  /* end of animation */
+  100% {
+    transform: rotate(-370deg); /* translate 0 means to be in the original position*/
+  }
 }

@@ -2,7 +2,7 @@
   <div class="card-details">
     <div class="card-details-important">
       <div class="status <%= task.status %>">
-        <%= task.status.upcase %>
+        <%= task.status&.upcase %>
       </div>
 
       <div class="task-data">
@@ -12,7 +12,7 @@
     </div>
         
     <div class="category">
-      <%= link_to category_name.upcase, category_path(task.category_id) %>
+      <%= link_to category_name&.upcase, category_path(task.category_id) %>
     </div>
 
     <div class="action-icon">
