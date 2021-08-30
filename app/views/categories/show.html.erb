@@ -1,8 +1,8 @@
 <section class="container-planner">
   <div class="container-label">
     <div class="container-sub-label">
-      <h1>Planner Dashboard</h1>
-      <h3>My own dashboard</h3>
+      <h1><%= @category.name&.capitalize %></h1>
+      <h3><%= @category.description&.capitalize %></h3>
     </div>
   </div>
 
@@ -17,7 +17,7 @@
         </div>
         <div class="sub-container-header-stats-category">
           <% @categories.each do |category| %>
-              <%= render partial: 'components/category-card', locals: {category: category }%>
+              <%= render partial: 'components/category-card-show', locals: {category: category }%>
           <% end %>
 
           <%# end %>

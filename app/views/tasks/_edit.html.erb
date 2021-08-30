@@ -14,7 +14,7 @@
       <%= form.select :status, ["New", "Ongoing", "Completed"] %>
       <%= form.label :due_date, "Due Date" %>
       <%= form.date_field :due_date, value: Time.now.strftime('%Y-%m-%d'), min: Date.today %>
-      <%= form.submit "Submit", class: "submit" %>
+      <%= form.submit "Update", class: "submit" %>
       <% end %>
     </div>
   </div>

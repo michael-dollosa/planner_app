@@ -5,10 +5,11 @@
   </button>
   </div>
     <div class="modal-body">
-      <h3>Due: <%= @task.due_date %></h3>
-      <p><%= @task.body %></p>
+      <p><%= simple_format(@task.body) %></p>
+      <h5>Due date: <%= @task.due_date %></h5>
     </div>
     <div class="modal-footer">
+      
       <%= link_to 'Delete', category_task_path(category_id: @task.category_id, id: @task.id), method: :delete, class: "delete", data: {confirm: "Any progress on this task will be deleted once you confirm", commit: 'Delete'} %>
       <%= link_to 'Edit', edit_category_task_path(category_id: @task.category_id, id: @task.id), {remote: true, 'data-toggle' =>  "modal", 'data-target' => '#categoryModal', class: "edit", id: "taskEdit" } %>
       </div>

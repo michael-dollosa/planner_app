@@ -1,7 +1,7 @@
 <div class="task-card-container">
   <div class="card-details">
     <div class="card-details-important">
-      <div class="status">
+      <div class="status <%= task.status %>">
         <%= task.status.upcase %>
       </div>
 
@@ -16,7 +16,7 @@
     </div>
 
     <div class="action-icon">
-      <%= link_to 'Show', category_task_path(category_id: task.category_id, id: task.id), {remote: true, 'data-toggle' =>  "modal", 'data-target' => '#showModal', class: "show" } %>
+      <%= link_to 'View', category_task_path(category_id: task.category_id, id: task.id), {remote: true, 'data-toggle' =>  "modal", 'data-target' => '#showModal', class: "show" } %>
     </div>
   </div>
   <div class="card-border-bottom"></div>

@@ -10,7 +10,17 @@
   </head>
 
   <body>
+
+    <nav class="navbar">
+      <%= link_to 'PLANO', root_path, class: "text-logo" %>
+      <section class="nav-user">
+        <h3>Login</h3>
+      </section>
+    </nav>
     <main>
+      <section class="flash-message-container">
+        <%= render 'components/flash_messages' %>
+      </section>
       <%= yield %>
     </main>
 

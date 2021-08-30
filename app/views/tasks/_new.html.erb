@@ -12,7 +12,7 @@
       <%= form.text_area :body %>
       <%= form.label :due_date, "Due Date" %>
       <%= form.date_field :due_date, value: Time.now.strftime('%Y-%m-%d'), min: Date.today %>
-      <%= form.submit "Submit", class: "submit" %>
+      <%= form.submit "Create", class: "submit" %>
       <% end %>
     </div>
   </div>
