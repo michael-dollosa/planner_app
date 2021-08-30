@@ -4,5 +4,11 @@ Rails.application.routes.draw do
   resources :categories do
     resources :tasks, except: [:index]
   end
-  root "categories#index"
+
+  authenticated :user do
+    root 'categories#index', as: :authenticated_root
+  end
+
+  root to: 'landing_page#index'
+
 end
