@@ -58,9 +58,9 @@ class TasksController < ApplicationController
     @task.delete
 
     if @task.delete
-      redirect_back(fallback_location: categories_path), success: "Successfully updated task"
+      redirect_back(fallback_location: categories_path, success: "Successfully updated task")
     else
-      redirect_back(fallback_location: categories_path), success: "Error occured in deletion. Please try again."
+      redirect_back(fallback_location: categories_path, success: "Error occured in deletion. Please try again.")
     end
   end
 
