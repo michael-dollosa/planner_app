@@ -91,12 +91,12 @@
   font-size: 1.1rem;
   background: $bg;
   &:hover {
-    background:#B5A300;
+    background:#c9ba36;
     transition: all 0.3s ease;
     color: #131313;
   }
   &:active {
-    background:#B5A300;
+    background:#c9ba36;
   } 
 }
 
@@ -147,13 +147,20 @@ body{
   >section >nav{
     // background-color: red;
     @include flex-row-between();
-    @include border-light();
+    // @include border-light();
     width: 78%;
     padding: 2rem 2rem;
 
     >.nav-user{
       >a.login{
-        padding-right: 2rem;
+        // background-color: red;
+        margin-right: 1rem;
+      }
+
+      >a.login:hover{
+        transition: all 0.3s ease;
+        border-radius: 3px;
+        background-color: #dadada;
       }
 
       >*{
@@ -575,15 +582,20 @@ button{
 
 //DEVISE VIEW STYLING
 
-main >h2{
+main > .devise-form-container{
+  height: 70vh;
+  width: 100%;
+  @include flex-col-center();
+}
+main >.devise-form-container >h2{
   font-family: inherit;
   font-size: 5rem;
   font-weight: 700;
 }
-main > form{
-  width: 70%;
+main >.devise-form-container > form{
+  
   max-width: 35rem;
-
+  width: 70%;
   >input,
   textarea,
   select,
@@ -728,6 +740,7 @@ form{
 
 //LANDING PAGE
 .landing-page-container{
+  height: 70vh;
   width: 80%;
   // background-color: #06a844;
   @include flex-row-between();
@@ -746,9 +759,9 @@ form{
       font-weight: 700;
       font-size: 6rem;
 
-      >span{
-        color:#B5A300;
-      }
+      // >span{
+      //   color:#B5A300;
+      // }
       @media only screen and (max-width: 1000px) {
         font-size: 7vw;
       }
