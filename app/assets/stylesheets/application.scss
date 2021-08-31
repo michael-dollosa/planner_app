@@ -134,20 +134,32 @@ html {
 body{
   background-color: #91919125;
   width: 100%;
-  @include flex-col-center();
-
-  >nav{
+  @include flex-col();
+  justify-content: space-between;
+  min-height: 96vh;
+  >.top-section{
+    width: 100%;
+    @include flex-col-center();
+  }
+  >section >nav{
     // background-color: red;
     @include flex-row-between();
     @include border-light();
     width: 74%;
     padding: 2rem 2rem;
-    
   }
 
-  >main{
+  >section >main{
     @include flex-col-center();
+    // background-color: red;
+    // min-height: 90vh;
     width: 80%;
+    margin-bottom: 8rem;
+  }
+
+  >footer{
+    width: 100%;
+    @include flex-col-center();
   }
 }
 
@@ -718,7 +730,7 @@ form{
     }
     >h1{
       font-weight: 700;
-      font-size: 7rem;
+      font-size: 6rem;
 
       >span{
         color:#B5A300;

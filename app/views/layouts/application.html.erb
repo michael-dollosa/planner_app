@@ -10,40 +10,49 @@
   </head>
 
   <body>
+    <section class="top-section">
+    
+      <nav class="navbar">
+        <%= link_to 'PLANO', root_path, class: "text-logo" %>
+        <section class="nav-user">
+        <% if user_signed_in? %>
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'login' %>
+        <% else %>
+          <%= link_to 'Login', new_user_session_path, class: 'login' %>
+          <%= link_to 'Try Plano for free', new_user_registration_path, class: 'signin' %>
+        <% end %>
+        </section>
+      </nav>
+      <main>
+        <section class="flash-message-container">
+          <%= render 'components/flash_messages' %>
+        </section>
+        <%= yield %>
+      </main>
 
-    <nav class="navbar">
-      <%= link_to 'PLANO', root_path, class: "text-logo" %>
-      <section class="nav-user">
-      <% if user_signed_in? %>
-        <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'login' %>
-      <% else %>
-        <%= link_to 'Login', new_user_session_path, class: 'login' %>
-        <%= link_to 'Try Plano for free', new_user_registration_path, class: 'signin' %>
-      <% end %>
-      </section>
-    </nav>
-    <main>
-      <section class="flash-message-container">
-        <%= render 'components/flash_messages' %>
-      </section>
-      <%= yield %>
-    </main>
+      <div id="categoryModal" class="modal hide fade" aria-labelledby="exampleModalLabel" aria-hidden="true" role="dialog">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+          <div class="modal-content" id="modal-content">
+          </div>
+        </div>
+      </div>
+
+      <%# show modal %>
+      <div id="showModal" class="modal hide fade" aria-labelledby="exampleModalLabel" aria-hidden="true" role="dialog">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+          <div class="modal-content" id="modal-content">
+          </div>
+        </div>
+      </div>
+    </section>
+    
+
+    <footer>
+      Created by Christian Michael Dollosa. © 2021
+    </footer>
 
   <%# general modal %>
-  <div id="categoryModal" class="modal hide fade" aria-labelledby="exampleModalLabel" aria-hidden="true" role="dialog">
-    <div class="modal-dialog modal-dialog-scrollable" role="document">
-      <div class="modal-content" id="modal-content">
-      </div>
-    </div>
-  </div>
-
-  <%# show modal %>
-  <div id="showModal" class="modal hide fade" aria-labelledby="exampleModalLabel" aria-hidden="true" role="dialog">
-    <div class="modal-dialog modal-dialog-scrollable" role="document">
-      <div class="modal-content" id="modal-content">
-      </div>
-    </div>
-  </div>
+  
 
   </body>
 </html>
