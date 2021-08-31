@@ -1,1 +1,11 @@
-<h1>Landing Page</h1>
+<section class="landing-page-container">
+  <div class="heading">
+    <h1><span>Planning</span> Made Easier</h1>
+    <p>Organize your tasks, achieve your goals. Start with us now!</p>
+    <%= link_to 'Create an Account', new_user_registration_path, class: 'submit' %>
+  </div>
+
+  <div class="landing-image">
+    <%= render_svg('landing_img.svg') %>
+  </div>
+</section>

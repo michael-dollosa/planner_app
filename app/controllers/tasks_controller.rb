@@ -26,7 +26,7 @@ class TasksController < ApplicationController
   end
 
   def show
-    @task = Task.find(params[:id])
+    @task = current_user.tasks.find(params[:id])
     respond_to do |format|
       format.html
       format.js 
@@ -34,7 +34,7 @@ class TasksController < ApplicationController
   end
   
   def edit
-    @task = Task.find(params[:id])
+    @task = current_user.tasks.find(params[:id])
     respond_to do |format|
       format.html
       format.js 
@@ -42,7 +42,7 @@ class TasksController < ApplicationController
   end
 
   def update
-    @task = Task.find(params[:id])
+    @task = current_user.tasks.find(params[:id])
     @task.update(task_params)
     
 
@@ -54,7 +54,7 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @task = Task.find(params[:id])
+    @task = current_user.tasks.find(params[:id])
     @task.delete
     redirect_back(fallback_location: categories_path)
   end

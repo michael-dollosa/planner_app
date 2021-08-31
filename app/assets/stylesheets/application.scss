@@ -91,12 +91,12 @@
   font-size: 1.1rem;
   background: $bg;
   &:hover {
-    background:#f8da31;
+    background:#B5A300;
     transition: all 0.3s ease;
     color: #131313;
   }
   &:active {
-    background:#f8da31;
+    background:#B5A300;
   } 
 }
 
@@ -700,7 +700,67 @@ form{
   width: 92%;
 }
 
+//LANDING PAGE
+.landing-page-container{
+  width: 80%;
+  // background-color: #06a844;
+  @include flex-row-between();
+  @media only screen and (max-width: 1000px) {
+    @include flex-col();
+    width: 90%;
+    flex-direction: column-reverse;
+  }
+  >.heading{
+    // background-color: red;
+    // width: 40%;
+    @media only screen and (max-width: 1000px) {
+      @include flex-col-center();
+    }
+    >h1{
+      font-weight: 700;
+      font-size: 7rem;
 
+      >span{
+        color:#B5A300;
+      }
+      @media only screen and (max-width: 1000px) {
+        font-size: 7vw;
+      }
+    }
+
+    >p{
+      font-weight: 300;
+      font-size: 1.6rem;
+      margin-bottom: 4rem;
+      @media only screen and (max-width: 1000px) {
+        text-align: center;
+        font-size: 3vw;
+      }
+    }
+
+    >a{
+      
+      padding: 1rem;
+      font-size: 1.4rem;
+    }
+  }
+
+  >.landing-image{
+    @include flex-col-center();
+    width: 100%;
+    
+    >svg{
+      width: 40vw;
+      @media only screen and (max-width: 1000px) {
+        height: 70vw;
+        width: 70vw;
+      }
+    }
+    // background-color: blue;
+  }
+}
+
+//LANDING PAGE END
 
 //animations
 

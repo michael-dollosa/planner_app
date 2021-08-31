@@ -29,7 +29,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category = Category.find(params[:id])
+    @category = current_user.categories.find(params[:id])
     @categories = current_user.categories.all.order("id")
     @tasks = @category.tasks.order("due_date ASC")
     @current_category_id = params[:id]
