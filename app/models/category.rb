@@ -4,7 +4,7 @@ class Category < ApplicationRecord
   
   before_save { self.name = name.downcase }
   validates :name, presence: true, length: { maximum: 20 },
-            uniqueness: { case_sensitive: false}
+            uniqueness: { case_sensitive: false, scope: :user_id}
 
   validates :description, presence: true
 end
