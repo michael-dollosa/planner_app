@@ -60,7 +60,12 @@ class CategoriesController < ApplicationController
   def destroy
     @category = Category.find(params[:id])
     @category.destroy
-    redirect_to categories_path
+
+    if @category.destroy
+      redirect_to categories_path, success: "Category successfully deleted"
+    else  
+      redirect_back(fallback_location: categories_path, danger: "Error occured in deletion. Please try again.")
+    end
   end
 
   private

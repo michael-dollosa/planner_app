@@ -56,7 +56,12 @@ class TasksController < ApplicationController
   def destroy
     @task = current_user.tasks.find(params[:id])
     @task.delete
-    redirect_back(fallback_location: categories_path)
+
+    if @task.delete
+      redirect_back(fallback_location: categories_path), success: "Successfully updated task"
+    else
+      redirect_back(fallback_location: categories_path), success: "Error occured in deletion. Please try again."
+    end
   end
 
   private
