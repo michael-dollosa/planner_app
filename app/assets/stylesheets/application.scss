@@ -135,7 +135,7 @@ html {
 
 body{
   // background-color: #91919125;
-  background-image: linear-gradient(27deg, rgb(207, 207, 207) 0%, rgb(243, 243, 243) 100%);
+  background-image: linear-gradient(27deg, rgb(240, 240, 240) 0%, rgb(247, 247, 247) 100%);
   width: 100%;
   @include flex-col();
   justify-content: space-between;
@@ -789,6 +789,19 @@ form{
 }
 
 //LANDING PAGE END
+
+//DEVISE ALERT AND NOTICE CSS
+.alert-notice{
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+.alert-alert{
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+//DEVICE ALERT END
 
 //animations
 
