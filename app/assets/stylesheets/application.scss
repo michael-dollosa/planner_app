@@ -547,6 +547,74 @@ button{
   color: #06a844;
 }
 
+//DEVISE VIEW STYLING
+
+main >h2{
+  font-family: inherit;
+  font-size: 5rem;
+  font-weight: 700;
+}
+main > form{
+  width: 70%;
+  max-width: 35rem;
+
+  >input,
+  textarea,
+  select,
+
+  >.remember-me{
+    display: flex;
+    align-items: center;
+    height: 1.1rem;
+    // @include flex-row();
+    >input[type="checkbox"]{
+      width: auto;
+      margin-right: 1rem;
+    }
+    >label{
+      height: 100%;
+    }
+    margin-bottom: 4rem;
+  }
+  >.field >input{
+    outline: none;
+    font-family: inherit;
+    font-size: 1.3rem;
+    padding: 0.7rem 1rem;
+    width: 100%;
+  }
+
+  >.field >label,
+  >.field >em{
+    font-family: inherit;
+    font-size: 1.1rem;
+    color: #727272;
+  }
+
+  >.actions > input[type="submit"]{
+    font-family: inherit;
+    font-size: 1.3rem;
+    font-weight: 500;
+    padding: 1rem;
+    width: 100%;
+  }
+}
+
+.devise-shared-links{
+  font-family: inherit;
+  font-size: 1.2rem;
+  color: rgb(131, 98, 28);
+}
+
+.devise-forgot-password{
+  font-family: inherit;
+  font-size: 1.2rem;
+  text-decoration: underline;
+  color: #727272;
+}
+
+//DEVISE VIEW STYLING END///
+
 form{
   @include flex-col();
   //input type text, date, 
