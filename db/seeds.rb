@@ -12,21 +12,25 @@ Task.destroy_all
 User.create!([
   {
     email: "test@test.com",
+    username: "test account 1",
     password: "test12345",
     password_confirmation: "test12345"
   },
   {
     email: "test2@test.com",
+    username: "test account 2",
     password: "test12345",
     password_confirmation: "test12345"
   },
   {
     email: "test3@test.com",
+    username: "test account 3",
     password: "test12345",
     password_confirmation: "test12345"
   },
   {
     email: "test4@test.com",
+    username: "test account 4",
     password: "test12345",
     password_confirmation: "test12345"
   }

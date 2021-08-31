@@ -10,5 +10,5 @@ Rails.application.routes.draw do
   end
 
   root to: 'landing_page#index'
-  get "*path" => redirect("/")
+  get "*path" => 'landing_page#error404'
 end

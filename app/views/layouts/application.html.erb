@@ -16,7 +16,20 @@
         <%= link_to 'PLANO', root_path, class: "text-logo" %>
         <section class="nav-user">
         <% if user_signed_in? %>
-          <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'login' %>
+          <%# <h3>Hi <%= current_user.username</h3> %>
+          <%# <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'login' %>
+          <div class="btn-group">
+            <button type="button" class="btn dropdown-toggle signin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Hello <%= current_user.username %>
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+              <div class="dropdown-divider"></div>
+              <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+          </div>
         <% else %>
           <%= link_to 'Login', new_user_session_path, class: 'login' %>
           <%= link_to 'Try Plano for free', new_user_registration_path, class: 'signin' %>
