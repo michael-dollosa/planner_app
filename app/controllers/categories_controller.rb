@@ -30,10 +30,10 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @categories = Category.all.order("id")
+    @categories = current_user.categories.all.order("id")
     @tasks = @category.tasks.order("due_date ASC")
     @current_category_id = params[:id]
-    @tasks_today = Task.all.where('due_date <= ?', DateTime.now-1).order("due_date ASC")
+    @tasks_today = @category.tasks.all.where('due_date <= ?', DateTime.now).order("due_date ASC")
   end
 
   def edit

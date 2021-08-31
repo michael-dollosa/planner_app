@@ -88,17 +88,17 @@
       </div>
 
       <div class="sub-container-task_cards">
-        <% @categories.each do |category| %>
-          <% if category.tasks.nil? || category.tasks&.count == 0 %>
+        
+          <% if @tasks.nil? || @tasks&.count == 0 %>
             <div class="task-card-container">
               <h3>No tasks created</h3>
             </div>
           <% else %>
-          <% category.tasks.each do |task| %>
+          <% @tasks.each do |task| %>
             <%= render partial: 'components/task-card', locals: {category_name: task.category.name, task: task} %>
           <% end %>
           <% end %>
-        <% end %>
+
         
       </div>
     </div>
