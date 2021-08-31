@@ -15,9 +15,9 @@
  */
 @import "bootstrap/scss/bootstrap";
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nerko+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=PT+Sans&display=swap');
 
- *,
+*,
  *::before,
  *::after{
   margin: 0;
@@ -102,6 +102,7 @@
 
 @mixin action-btn-border($bg) {
   color: black;
+  background: transparent;
   text-decoration: none;
   padding:5px 10px;
   border-radius:3px;
@@ -129,14 +130,16 @@ html {
   font-size: 62.5%;
   font-family: 'Open Sans', sans-serif;
   // overflow-y: scroll;
+  
 }
 
 body{
-  background-color: #91919125;
+  // background-color: #91919125;
+  background-image: linear-gradient(27deg, rgb(207, 207, 207) 0%, rgb(243, 243, 243) 100%);
   width: 100%;
   @include flex-col();
   justify-content: space-between;
-  min-height: 96vh;
+  min-height: 100vh;
   >.top-section{
     width: 100%;
     @include flex-col-center();
@@ -145,8 +148,18 @@ body{
     // background-color: red;
     @include flex-row-between();
     @include border-light();
-    width: 74%;
+    width: 78%;
     padding: 2rem 2rem;
+
+    >.nav-user{
+      >a.login{
+        padding-right: 2rem;
+      }
+
+      >*{
+        font-size: 1.4rem;
+      }
+    }
   }
 
   >section >main{
@@ -159,6 +172,7 @@ body{
 
   >footer{
     width: 100%;
+    padding: 1rem;
     @include flex-col-center();
   }
 }
@@ -661,8 +675,8 @@ form{
 }
 
 .text-logo{
-  font-family: 'Nerko One', cursive;
-  font-size: 4rem;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 3rem;
   letter-spacing: 5px;
   color: rgb(0, 0, 0);
 }
@@ -751,7 +765,8 @@ form{
     }
 
     >a{
-      
+      border: none;
+      @include action-btn-border(rgb(26, 26, 26));
       padding: 1rem;
       font-size: 1.4rem;
     }
@@ -759,6 +774,7 @@ form{
 
   >.landing-image{
     @include flex-col-center();
+    align-items: flex-end;
     width: 100%;
     
     >svg{
