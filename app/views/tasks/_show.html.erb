@@ -5,8 +5,8 @@
   </button>
   </div>
     <div class="modal-body">
-      <p><%= simple_format(@task.body) %></p>
-      <h5>Due date: <%= @task.due_date %></h5>
+      <%= simple_format(@task.body) %>
+      <h5>Due date: <%= @task.due_date.strftime("%b %d, %Y") %></h5>
     </div>
     <div class="modal-footer">
       
