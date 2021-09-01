@@ -149,6 +149,7 @@ body{
     @include flex-row-between();
     // @include border-light();
     width: 78%;
+    height: 10vh;
     padding: 2rem 2rem;
 
     >.nav-user{
@@ -175,6 +176,10 @@ body{
     // min-height: 90vh;
     width: 80%;
     margin-bottom: 8rem;
+    @media only screen and (max-width: 390px) {
+      width: 90%;
+    }
+    
   }
 
   >footer{
@@ -211,10 +216,13 @@ button{
       >h1{
         font-size: 3rem;
         font-weight: 700;
-        letter-spacing: 2px;
+        @media only screen and (max-width: 390px) {
+          font-size: 2rem;
+        }
+        // letter-spacing: 2px;
       }
       >h3{
-        font-size: 2rem;
+        font-size: 1.5rem;
         font-weight: 300;
       }
     }
@@ -293,7 +301,7 @@ button{
       >.container-header-stats >.sub-container-header-stats-category >.category-card{
         // background-color: red;
         @include card-border-shadow;
-        border-radius: 1rem;
+        border-radius: 5px;
         margin-bottom: 1rem;
         >*{
           padding: 1rem 2rem;
@@ -373,17 +381,29 @@ button{
             font-size: 1rem;
             font-weight: 700;
             margin-right: 1rem;
+            @media only screen and (max-width: 390px) {
+              display: none;
+            }
           }
           >.task-data{
             padding-left: 3rem;
+            @media only screen and (max-width: 390px) {
+              padding-left: 0;
+            }
             >h1{
               font-size: 1.2rem;
               font-weight: 700;
+              @media only screen and (max-width: 390px) {
+                font-weight: 500;
+              }
             }
     
             >h4{
               font-size: .8rem;
               font-weight: 100;
+              @media only screen and (max-width: 390px) {
+                display: none;
+              }
             }
           }
         }
@@ -392,6 +412,9 @@ button{
           text-transform: uppercase;
           font-size: 1.2rem;
           font-weight: 700;
+          @media only screen and (max-width: 390px) {
+            display: none;
+          }
         }
     
         >.action-icon{
@@ -430,7 +453,7 @@ button{
         @include card-border-shadow;
         width: calc(70vw/2);
         height: calc( (70vw/5) + 4rem );
-        border-radius: 1rem;
+        border-radius: 5px;
         padding: 1rem;
     
         >h1{
@@ -445,7 +468,7 @@ button{
     
       >.sub-container-task_cards{
         @include card-border-shadow();
-        border-radius: 1rem;
+        // border-radius: 1rem;
         margin-bottom: 3rem;
         >*:not(:last-child){
           position: relative;
@@ -562,6 +585,40 @@ button{
   font-weight: 500;
 }
 
+.nav-user-btn{
+  text-decoration: none;
+  outline: none;
+  border: 1px solid #000000;
+  border-radius: .5rem;
+  background-color: none;
+  padding: .8rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  width: 100%;
+
+  @media only screen and (max-width: 390px) {
+    @include flex-col-center();
+    border: none;
+    font-size: 2rem;
+
+  }
+}
+
+.btn-group{
+  >button{
+    @media only screen and (max-width: 390px) {
+      >*{
+        display: none;
+      }
+    }
+  }
+  >.dropdown-menu{
+    min-width: 15rem;
+    width: 100%;
+    font-size: 1.3rem;
+  }
+}
+
 .login{
   padding: 1rem;
   font-size: 1.3rem;
@@ -591,11 +648,18 @@ main >.devise-form-container >h2{
   font-family: inherit;
   font-size: 5rem;
   font-weight: 700;
+  @media only screen and (max-width: 390px) {
+    font-size: 3rem;
+  }
 }
 main >.devise-form-container > form{
   
   max-width: 35rem;
   width: 70%;
+
+  @media only screen and (max-width: 390px) {
+    width: 95%;
+  }
   >input,
   textarea,
   select,
@@ -704,6 +768,14 @@ form{
   font-weight: 700;
 }
 
+.cancel-account{
+  width: 100%;
+  @include action-btn(#ee4334);
+  @include flex-col-center();
+  font-size: 1.3rem;
+  padding: 1rem;
+}
+
 //modals
 
 .modal-body {
@@ -729,13 +801,14 @@ form{
 //flash messages
 .flash-message-container{
   @include flex-col-center();
-  width: 100%;
+  width: 92%;
   height: 2rem;
 }
 .alert{
   align-content: center;
   padding: 1rem;
-  width: 92%;
+  // width: 92%;
+  width: 100%;
 }
 
 //LANDING PAGE
