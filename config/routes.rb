@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   authenticated :user do
     root 'categories#index', as: :authenticated_root
   end
+  get '/page-not-found', action: :error404, controller: 'landing_page'
 
   root to: 'landing_page#index'
   get "*path" => 'landing_page#error404'

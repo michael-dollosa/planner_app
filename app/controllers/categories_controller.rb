@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  rescue_from ActiveRecord::RecordNotFound, with: :handle_error
   #devise
   before_action :authenticate_user!
   
