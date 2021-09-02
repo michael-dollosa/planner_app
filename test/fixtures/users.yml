@@ -6,8 +6,10 @@
 #
 one: 
   email: test@test.com
+  username: test user 1
 # column: value
 #
 two: 
   email: test2@test.com
+  username: test user 2
 # column: value
