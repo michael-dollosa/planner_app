@@ -156,6 +156,17 @@ body{
       >a.login{
         // background-color: red;
         margin-right: 1rem;
+        @media only screen and (max-width: 500px) {
+          width: 90%;
+          display: none;
+        }
+      }
+
+      >a.signin{
+        @media only screen and (max-width: 500px) {
+          width: 90%;
+          display: none;
+        }
       }
 
       >a.login:hover{
@@ -855,11 +866,19 @@ form{
       }
     }
 
-    >a{
+    >a:not(:last-child){
       border: none;
       @include action-btn-border(rgb(26, 26, 26));
       padding: 1rem;
       font-size: 1.4rem;
+    }
+
+    >a:last-child{
+      display: none;
+      margin-top: 2rem;
+      @media only screen and (max-width: 500px) {
+        display: block;
+      }
     }
   }
 
@@ -871,7 +890,7 @@ form{
     >svg{
       width: 40vw;
       @media only screen and (max-width: 1000px) {
-        height: 70vw;
+        max-height: 40vw;
         width: 70vw;
       }
     }

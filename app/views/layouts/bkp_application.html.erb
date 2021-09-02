@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PlannerApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <section class="top-section">
+    
+      <nav class="navbar navbar-expand-lg navbar-light" id="nav-overwrite">
+        <%# <section class="nav-logo">
+          <%= link_to 'PLANO', root_path, class: "text-logo" %>
+        <%# </section> %>
+        
+        <section class="nav-user">
+          <section class="nav-logo">
+            <%= link_to 'PLANO', root_path, class: "text-logo" %>
+          </section>
+        <% if user_signed_in? %>
+          <%# <h3>Hi <%= current_user.username</h3> %>
+          <%# <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'login' %>          
+          <div class="btn-group">
+            <button type="button" class="btn dropdown-toggle nav-user-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span>Hello <%= current_user.username %></span>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right">
+              <%= link_to 'Go to Dashboard', root_path, class: "dropdown-item" %>
+              <%= link_to 'Edit Profile', edit_user_registration_path, class: "dropdown-item" %>
+              <div class="dropdown-divider"></div>
+              <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+          </div>
+
+        <% else %>
+          <div class="nav-desktop">
+            <%= link_to 'Login', new_user_session_path, class: 'login' %>
+            <%= link_to 'Try Plano free', new_user_registration_path, class: 'signin' %>
+          </div>
+          <div class="nav-mobile">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <div class="navbar-nav">
+                <%= link_to 'Login', new_user_session_path, id: "navbarDropdownMenuLink", class: "nav-link" %>
+                <%= link_to 'Try Plano free', new_user_registration_path, id: "navbarDropdownMenuLink", class: "nav-link" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        </section>
+
+        
+      </nav>
+      <main>
+        <section class="flash-message-container">
+          <%= render 'components/flash_messages' %>
+        </section>
+        <%= yield %>
+      </main>
+
+      <div id="categoryModal" class="modal hide fade" aria-labelledby="exampleModalLabel" aria-hidden="true" role="dialog">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+          <div class="modal-content" id="modal-content">
+          </div>
+        </div>
+      </div>
+
+      <%# show modal %>
+      <div id="showModal" class="modal hide fade" aria-labelledby="exampleModalLabel" aria-hidden="true" role="dialog">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+          <div class="modal-content" id="modal-content">
+          </div>
+        </div>
+      </div>
+    </section>
+    
+
+    <footer>
+      Created by Christian Michael Dollosa. © 2021
+    </footer>
+
+  <%# general modal %>
+  
+
+  </body>
+</html>
