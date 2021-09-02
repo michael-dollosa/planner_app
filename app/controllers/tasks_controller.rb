@@ -1,7 +1,9 @@
 class TasksController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :handle_error
   #devise
-  before_action :authenticate_user!
+  before_action :authenticate_user!,
+                :find_task_by_id, except: [:new, :create]
+
   def new
     @task = Task.new()
     respond_to do |format|
@@ -26,7 +28,6 @@ class TasksController < ApplicationController
   end
 
   def show
-    @task = current_user.tasks.find(params[:id])
     respond_to do |format|
       format.html
       format.js 
@@ -34,7 +35,6 @@ class TasksController < ApplicationController
   end
   
   def edit
-    @task = current_user.tasks.find(params[:id])
     respond_to do |format|
       format.html
       format.js 
@@ -42,7 +42,6 @@ class TasksController < ApplicationController
   end
 
   def update
-    @task = current_user.tasks.find(params[:id])
     @task.update(task_params)
     
 
@@ -54,7 +53,6 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @task = current_user.tasks.find(params[:id])
     @task.delete
 
     if @task.delete
@@ -68,5 +66,9 @@ class TasksController < ApplicationController
 
   def task_params
     params.require(:task).permit(:title, :body, :status, :due_date)
+  end
+
+  def find_task_by_id
+    @task = current_user.tasks.find(params[:id])
   end
 end
