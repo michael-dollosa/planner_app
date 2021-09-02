@@ -1,7 +1,8 @@
 class CategoriesController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :handle_error
   #devise
-  before_action :authenticate_user!
+  before_action :authenticate_user!,
+                :find_category_by_id, except: [:index, :new, :create]
   
   def index
     @categories = current_user.categories.all.order("id")
@@ -30,7 +31,6 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category = current_user.categories.find(params[:id])
     @categories = current_user.categories.all.order("id")
     @tasks = @category.tasks.order("due_date ASC")
     @current_category_id = params[:id]
@@ -38,7 +38,6 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-    @category = Category.find(params[:id])
     respond_to do |format|
       format.html
       format.js 
@@ -46,7 +45,6 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    @category = Category.find(params[:id])
     @category.update(category_params)
 
     if @category.update(category_params)
@@ -59,7 +57,6 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    @category = Category.find(params[:id])
     @category.destroy
 
     if @category.destroy
@@ -75,13 +72,7 @@ class CategoriesController < ApplicationController
     params.require(:category).permit(:name, :description)
   end
 
-  def get_tasks
-    tasks = []
-    current_user.categories.all.each do |category|
-      tasks << category.tasks
-      tasks.flatten
-      p "#{tasks}"
-    end
-    return tasks.flatten
+  def find_category_by_id
+    @category = Category.find(params[:id])
   end
 end
