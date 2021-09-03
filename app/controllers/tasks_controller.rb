@@ -43,7 +43,6 @@ class TasksController < ApplicationController
 
   def update
     @task.update(task_params)
-    
 
     if @task.update(task_params)
       redirect_back fallback_location: categories_path, success: "Successfully updated task"

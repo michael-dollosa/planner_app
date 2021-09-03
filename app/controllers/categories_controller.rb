@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
   
   def index
     @categories = current_user.categories.all.order("id")
-    @tasks = current_user.tasks
+    @tasks = current_user.tasks.order("due_date")
     @tasks_today = current_user.tasks.all.where('due_date <= ?', DateTime.now).order("due_date ASC").order("due_date ASC")
   end
 
