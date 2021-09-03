@@ -621,6 +621,7 @@ button{
 }
 
 .nav-user-btn{
+  
   text-decoration: none;
   outline: none;
   // border: 1px solid #000000;
@@ -634,6 +635,7 @@ button{
 
   @media only screen and (max-width: 390px) {
     @include flex-col-center();
+    min-width: 0;
     border: none;
     font-size: 2rem;
   }
@@ -949,100 +951,3 @@ form{
 }
 //DEVICE ALERT END
 
-//animations
-
-/* animations */
-@keyframes moveInBottom {
-  /* start of animation */
-  0% {
-      opacity: 0;
-      transform: translateY(5rem); /* animate in X direction */
-  }
-
-  /* end of animation */
-  100% {
-      opacity: 1;
-      transform: translate(0); /* translate 0 means to be in the original position*/
-  }
-}
-
-@keyframes moveInTop {
-  /* start of animation */
-  0% {
-      opacity: 0;
-      transform: translateY(-5rem); /* animate in X direction */
-  }
-
-  /* end of animation */
-  100% {
-      opacity: 1;
-      transform: translate(0); /* translate 0 means to be in the original position*/
-  }
-}
-
-@keyframes moveInLeft {
-  /* start of animation */
-  0% {
-      opacity: 0;
-      transform: translateX(-2rem); /* animate in X direction */
-  }
-
-  100% {
-      opacity: 1;
-      transform: translate(0); /* translate 0 means to be in the original position*/
-  }
-}
-
-
-@keyframes moveInRight {
-  /* start of animation */
-  0% {
-      opacity: 0;
-      transform: translateX(10rem); /* animate in X direction */
-  }
-
-  80% {
-      opacity: 1;
-      transform: translateX(-1rem); /* animate in X direction */
-  }
-
-  /* end of animation */
-  100% {
-      opacity: 1;
-      transform: translate(0); /* translate 0 means to be in the original position*/
-  }
-}
-
-@keyframes moveIn {
-  /* start of animation */
-  0% {
-      opacity: 0;
-  }
-
-  80% {
-      opacity: 1;
-  }
-}
-
-@keyframes moveout {
-  /* start of animation */
-  0% {
-      opacity: 1;
-  }
-
-  80% {
-      opacity: 0;
-  }
-}
-
-@keyframes rotate180 {
-  /* start of animation */
-  0% {
-      transform: rotate(-10deg); /* animate in X direction */
-  }
-
-  /* end of animation */
-  100% {
-    transform: rotate(-370deg); /* translate 0 means to be in the original position*/
-  }
-}
