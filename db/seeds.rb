@@ -8,29 +8,33 @@
 User.destroy_all
 Category.destroy_all
 Task.destroy_all
+sample_body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 
 User.create!([
   {
     email: "test@test.com",
-    username: "test account 1",
+    username: "Jon Doe",
     password: "test12345",
     password_confirmation: "test12345"
   },
   {
     email: "test2@test.com",
-    username: "test account 2",
+    username: "Hoe Jon",
     password: "test12345",
     password_confirmation: "test12345"
   },
   {
     email: "test3@test.com",
-    username: "test account 3",
+    username: "Jane Bow",
     password: "test12345",
     password_confirmation: "test12345"
   },
   {
     email: "test4@test.com",
-    username: "test account 4",
+    username: "Sangre Amihan",
     password: "test12345",
     password_confirmation: "test12345"
   }
@@ -40,20 +44,20 @@ User.create!([
 User.all.each do |user|
   user.categories.create!([
     {
-      name: "Food #{user.id}",
-      description: "Food Category from seed file"
-    },
-    {
-      name: "Personal #{user.id}",
+      name: "Personal",
       description: "Personal Category from seed file"
     },
     {
-      name: "Travel #{user.id}",
-      description: "Travel Category from seed file"
+      name: "Work",
+      description: "Work Category from seed file"
     },
     {
-      name: "Education #{user.id}",
-      description: "Education Category from seed file"
+      name: "House Chores",
+      description: "House Chores Category from seed file"
+    },
+    {
+      name: "Hobbies",
+      description: "Hobbies Category from seed file"
     }
   ])
   p "Created #{user.categories.count} categories under #{user.email}"
@@ -63,29 +67,29 @@ Category.all.each do |category|
   category.tasks.create!([
     {
       user_id: category.user_id,
-      title: "#{category.name.capitalize} Task 1",
-      body: "#{category.name.capitalize} Task 1 body",
+      title: "Do something nice",
+      body: sample_body,
       status: "new",
       due_date: Time.at(0.0 + rand(1..1.1) * (Time.now.to_f - 0.0.to_f))
     },
     {
       user_id: category.user_id,
-      title: "#{category.name.capitalize} Task 2",
-      body: "#{category.name.capitalize} Task 2 body",
+      title: "Go outside and plant trees",
+      body: sample_body,
       status: "ongoing",
       due_date: Time.at(0.0 + rand(1..1.1) * (Time.now.to_f - 0.0.to_f))
     },
     {
       user_id: category.user_id,
-      title: "#{category.name.capitalize} Task 3",
-      body: "#{category.name.capitalize} Task 3 body",
+      title: "Bake some cookies",
+      body: sample_body,
       status: "completed",
       due_date: Time.at(0.0 + rand(1..1.1) * (Time.now.to_f - 0.0.to_f))
     },
     {
       user_id: category.user_id,
-      title: "#{category.name.capitalize} Task 4",
-      body: "#{category.name.capitalize} Task 4 body",
+      title: "Read Physics books for fun",
+      body: sample_body,
       status: "new",
       due_date: Time.at(0.0 + rand(1..1.1) * (Time.now.to_f - 0.0.to_f))
     }
