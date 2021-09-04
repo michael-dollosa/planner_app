@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   get '/page-not-found', action: :error404, controller: 'landing_page'
 
   root to: 'landing_page#index'
+  get "/users/password" => 'landing_page#error404'
   get "*path" => 'landing_page#error404'
 end
