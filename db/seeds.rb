@@ -91,7 +91,7 @@ Category.all.each do |category|
       title: "Read Physics books for fun",
       body: sample_body,
       status: "new",
-      due_date: Time.at(0.0 + rand(1..1.1) * (Time.now.to_f - 0.0.to_f))
+      due_date: Date.today - rand(3..10).days
     }
   ])
   p "Created #{category.tasks.count} tasks under #{category.name.capitalize} of #{category.user.email}"

@@ -11,9 +11,9 @@
       <%= form.label :body, "Description" %>
       <%= form.text_area :body %>
       <%= form.label :status, "Status" %>
-      <%= form.select :status, ["New", "Ongoing", "Completed"] %>
+      <%= form.select :status, options_for_select(["New", "Ongoing", "Completed"], selected: @task.status.capitalize) %>
       <%= form.label :due_date, "Due Date" %>
-      <%= form.date_field :due_date, value: @task.due_date.strftime('%Y-%m-%d'), min: Date.today %>
+      <%= form.date_field :due_date, value: @task.due_date.strftime('%Y-%m-%d') %>
       <%= form.submit "Update", class: "submit" %>
       <% end %>
     </div>
