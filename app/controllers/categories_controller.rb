@@ -34,7 +34,7 @@ class CategoriesController < ApplicationController
     @categories = current_user.categories.all.order("id")
     @tasks = @category.tasks.order("due_date ASC")
     @current_category_id = params[:id]
-    @tasks_today = @category.tasks.all.where('due_date <= ?', DateTime.now).order("due_date ASC")
+    @tasks_today = @category.tasks.all.where('due_date <= ?', DateTime.now).where.not(status: "completed").order("due_date ASC")
   end
 
   def edit
